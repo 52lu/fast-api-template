@@ -9,7 +9,7 @@
 
 from fastapi import FastAPI
 from app.config import appSettings
-from app.controller import indexController
+from app.controller import api
 
 # 创建app
 appServer = FastAPI(
@@ -18,4 +18,4 @@ appServer = FastAPI(
 )
 
 # 注册路由
-appServer.include_router(indexController.router)
+appServer.include_router(api.router)

@@ -6,6 +6,8 @@
 @Author  ：Mr.LiuQHui
 @Date    ：2023/8/10 11:17 
 """
+import random
+import time
 
 if __name__ == '__main__':
-    print("test")
+    print("test", time.time())

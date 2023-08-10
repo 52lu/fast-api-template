@@ -15,6 +15,7 @@ class AppConfig(BaseSettings):
     service_version: str = "v1.0.0"
     service_port: int = 8000
     hugging_face_token: str = ""
+    img_path: str = "./tmp"
 
     # 指定读取env
     class Config:
