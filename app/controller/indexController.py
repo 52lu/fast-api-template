@@ -8,6 +8,8 @@
 """
 from fastapi import APIRouter
 
+from app.utils import httputil
+
 from app.config import appSettings
 
 router = APIRouter()
@@ -15,4 +17,4 @@ router = APIRouter()
 
 @router.get("/")
 async def index():
-    return {"message": "Hello World", "conf": appSettings}
+    return httputil.HttpSuccess(appSettings)
