@@ -14,7 +14,7 @@ class AppConfig(BaseSettings):
     service_name: str = "AI学习演示"
     service_version: str = "v1.0.0"
     service_port: int = 8000
-    hugg_face_token: str = ""
+    hugging_face_token: str = ""
 
     # 指定读取env
     class Config:
