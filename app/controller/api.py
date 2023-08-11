@@ -21,7 +21,7 @@ async def index():
     return httputil.HttpSuccess(appSettings)
 
 
-@router.get("/text2img/")
+@router.get("/text2img")
 async def text2img(text: str):
     if text == "":
         return httputil.HttpFail("参数不能为空~")
