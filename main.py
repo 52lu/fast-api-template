@@ -10,4 +10,4 @@ import uvicorn
 from app.bootstrap import *
 
 if __name__ == '__main__':
-    uvicorn.run(appServer, port=appSettings.service_port)
+    uvicorn.run(appServer, host=appSettings.service_host, port=appSettings.service_port)

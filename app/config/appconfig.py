@@ -11,9 +11,10 @@ from pydantic import BaseSettings
 
 class AppConfig(BaseSettings):
     # 定义属性
+    service_port: int = 8000
+    service_host: str = "0.0.0.0"
     service_name: str = "AI学习演示"
     service_version: str = "v1.0.0"
-    service_port: int = 8000
     hugging_face_token: str = ""
     img_path: str = "./tmp"
 
