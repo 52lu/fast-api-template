@@ -13,7 +13,7 @@ from app.utils import httputil
 from app.config import appSettings
 from app.service.aiservice import aitext
 
-router = APIRouter()
+router = APIRouter(prefix="/api")
 
 
 @router.get("/")
