@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 """
 @Project ：fast-use-ai 
-@File    ：main.py
+@File    ：localTest.py
 @Author  ：Mr.LiuQHui
 @Date    ：2023/8/10 11:11 
 """
