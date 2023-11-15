@@ -10,8 +10,8 @@ from datetime import datetime
 from fastapi import APIRouter
 
 router = APIRouter(
-    prefix="/open",
-    tags=["open"]
+    prefix="/demo",
+    tags=["演示接口"]
 )
 
 

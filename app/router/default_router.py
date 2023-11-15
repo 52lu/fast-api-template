@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 """
 @Project ：fast-api-template
-@File    ：index_router.py
+@File    ：default_router.py
 @Author  ：Mr.LiuQHui
 @Date    ：2023/11/13 18:45 
 """
@@ -10,7 +10,7 @@ from datetime import datetime
 
 from fastapi import APIRouter
 
-router = APIRouter()
+router = APIRouter(tags=["默认路由"])
 
 
 @router.get("/")
