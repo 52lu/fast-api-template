@@ -6,6 +6,7 @@
 @Author  ：Mr.LiuQHui
 @Date    ：2023/11/13 18:45 
 """
+from datetime import datetime
 
 from fastapi import APIRouter
 
@@ -17,4 +18,8 @@ async def index():
     """
     默认访问链接
     """
-    return {"message": "Hello World!"}
+    return {
+        "code": 200,
+        "msg": "Hello World!",
+        "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }

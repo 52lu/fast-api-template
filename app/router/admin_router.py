@@ -13,7 +13,7 @@ from app.service import admin_service
 
 router = APIRouter(
     prefix="/admin",
-    tags=["后台相关接口","admin"],
+    tags=["后台相关接口"],
     # dependencies=[Depends(get_token_header)],
     responses={404: {"description": "admin下,路由不存在~"}},
 )

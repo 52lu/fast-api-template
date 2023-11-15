@@ -11,12 +11,11 @@ from fastapi import FastAPI
 from app.router import index_router, admin_router, open_router
 
 # 实例化
-app = FastAPI(redoc_url=None)
+app = FastAPI(redoc_url=None, docs_url=None)
 # 加载路由
 app.include_router(index_router.router)
 app.include_router(admin_router.router)
 app.include_router(open_router.router)
 
-#
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
