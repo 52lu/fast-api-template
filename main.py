@@ -11,7 +11,7 @@ from fastapi import FastAPI
 from app.router import RegisterRouterList
 
 # 实例化
-app = FastAPI()
+app = FastAPI(redoc_url=None)
 # 加载路由 (进行优化)
 # app.include_router(index_router.router)
 # app.include_router(admin_router.router)
