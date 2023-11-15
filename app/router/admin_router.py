@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 """
-@Project ：fast-use-ai 
+@Project ：fast-api-template
 @File    ：user.py
 @Author  ：Mr.LiuQHui
 @Date    ：2023/11/13 17:44 
@@ -13,7 +13,7 @@ from app.service import admin_service
 
 router = APIRouter(
     prefix="/admin",
-    tags=["admin"],
+    tags=["后台相关接口","admin"],
     # dependencies=[Depends(get_token_header)],
     responses={404: {"description": "admin下,路由不存在~"}},
 )

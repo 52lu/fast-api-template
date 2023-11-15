@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 """
-@Project ：fast-use-ai 
+@Project ：fast-api-template
 @File    ：index_router.py
 @Author  ：Mr.LiuQHui
 @Date    ：2023/11/13 18:45 
