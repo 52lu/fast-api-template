@@ -6,8 +6,6 @@
 @Author  ：Mr.LiuQHui
 @Date    ：2023/11/13 17:45
 """
-import time
-from datetime import datetime
 from fastapi import APIRouter
 
 router = APIRouter(
@@ -16,28 +14,20 @@ router = APIRouter(
 )
 
 
-@router.get('/config')
-async def config():
-    begin = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+@router.get("/path/test")
+async def pathParamReceive2():
     """
-    配置信息
+    路径参数接收-演示-不带路径参数
     """
-    time.sleep(5)
     return {
-        "code": 200,
-        "message": {
-            "app_name": "FastAPI框架学习",
-            "app_version": "v0.0.1",
-            "begin_time": begin,
-            "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        }
+        "msg": "hello",
     }
 
 
 @router.get("/path/{order_id}")
 async def pathParamReceive(order_id: int):
     """
-    路径参数接收演示
+    路径参数接收-演示-带路径参数
     """
     return {
         "接受结果": order_id,
