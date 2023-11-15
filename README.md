@@ -8,7 +8,11 @@
 
 ### 1.1 项目介绍
 
-学习使用[FastAPI](https://fastapi.tiangolo.com/zh/tutorial/first-steps/)框架~
+
+项目主要记录学习使用[FastAPI](https://fastapi.tiangolo.com/zh/tutorial/first-steps/)框架的一些知识，希望能帮助其他开发者掌握FastAPI框架。
+
+
+
 
 
 > <span style="color: red; ">@注: 初次学习使用fastapi框架，编码规范和使用方法，仅供参考</span>
@@ -69,7 +73,8 @@ INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 ```
 
-
+### 1.4 项目状态
+持续学习开发中...
 
 
 
