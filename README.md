@@ -18,8 +18,58 @@
 ### 1.2 目录结构
 
 ```shell
-
-
+├── README.md  #项目介绍
+├── app
+│   ├── __init__.py
+│   ├── config  # 配置相关
+│   │   └── __init__.py
+│   ├── constant  # 常量相关
+│   │   └── __init__.py
+│   ├── dao # 封装查询数据的方法
+│   │   └── __init__.py
+│   ├── dependencies  # 封装被依赖函数
+│   │   └── __init__.py
+│   ├── main.py # 主文件
+│   ├── middleware # 中间件
+│   │   └── __init__.py
+│   ├── models # 数据模型文件，和表结构对应
+│   │   └── __init__.py
+│   ├── router # 路由也可以理解controller
+│   │   ├── __init__.py
+│   │   ├── admin_router.py # 后台接口
+│   │   └── demo_router.py # 演示接口
+│   ├── parameter # 声明参数对应的Pydantic模型
+│   │   └── __init__.py
+│   ├── service # 就具体业务实现逻辑
+│   │   ├── __init__.py
+│   └── utils # 工具类
+│       ├── __init__.py
+│       └── str_util.py
+├── requirements.txt #依赖文件
+├── tests # 单元测试目录
+    ├── __init__.py
+    └── local_test.py
 ```
+
+### 1.3 项目启动
+
+```sh
+# 使用uvicorn启动
+➜ uvicorn app.main:app
+INFO:     Started server process [36375]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+
+# 使用python
+➜  python main.py
+INFO:     Started server process [36468]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+```
+
+
+
 
 
