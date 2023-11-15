@@ -8,7 +8,7 @@
 
 ### 1.1 项目介绍
 
-项目是基于[FastAPI](https://fastapi.tiangolo.com/zh/tutorial/first-steps/)框架搭建的脚手架模板,方便后续其他新项目直接使用，但愿该项目能为想学习、想使用FastApi的开发人员提供帮助。
+项目是基于[FastAPI](https://fastapi.tiangolo.com/zh/tutorial/first-steps/)框架搭建的脚手架模板,方便后续其他新项目可以直接使用，但愿该项目能为想学习、想使用FastApi的开发人员提供帮助。
 
 
 
