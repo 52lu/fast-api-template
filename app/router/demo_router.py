@@ -9,6 +9,8 @@
 from typing import Union
 
 from fastapi import APIRouter
+# from app.parameter.demo_param import DemoParam
+from app.parameter import DemoParam
 
 router = APIRouter(
     prefix="/demo",
@@ -16,8 +18,21 @@ router = APIRouter(
 )
 
 
+@router.post("/query/body/receive")
+async def bodyReceive(body: DemoParam):
+    """
+    请求体参数接受-演示
+    """
+    return {
+        "msg": "请求体参数接受",
+        "result": {
+            "body": body,
+        }
+    }
+
+
 @router.get("/query/receive")
-async def queryParamReceive(username: str, password: str, age: int = 18, city: Union[str, None] = None):
+async def queryParamReceive(username: str, sex: str = '男', city: Union[str, None] = "None"):
     """
     查询参数接受-演示
     """
@@ -25,8 +40,7 @@ async def queryParamReceive(username: str, password: str, age: int = 18, city: U
         "msg": "查询参数接收",
         "result": {
             "username": username,
-            "password": password,
-            "age": age,
+            "sex": sex,
             "city": city,
         }
     }
