@@ -6,12 +6,30 @@
 @Author  ：Mr.LiuQHui
 @Date    ：2023/11/13 17:45
 """
+from typing import Union
+
 from fastapi import APIRouter
 
 router = APIRouter(
     prefix="/demo",
     tags=["演示接口"]
 )
+
+
+@router.get("/query/receive")
+async def queryParamReceive(username: str, password: str, age: int = 18, city: Union[str, None] = None):
+    """
+    查询参数接受-演示
+    """
+    return {
+        "msg": "查询参数接收",
+        "result": {
+            "username": username,
+            "password": password,
+            "age": age,
+            "city": city,
+        }
+    }
 
 
 @router.get("/path/test")
