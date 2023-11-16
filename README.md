@@ -1,14 +1,12 @@
-# fast-api-template
+## fast-api-template
 
 [![Python](https://img.shields.io/badge/Python-3.11+-yellow?style=for-the-badge&logo=python&logoColor=white&labelColor=101010)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.99.0+-00a393?style=for-the-badge&logo=fastapi&logoColor=white&labelColor=101010)](https://fastapi.tiangolo.com)
 
+### 1.项目介绍
 
-## 1.项目信息
-
-### 1.1 项目介绍
-
-项目是基于[FastAPI](https://fastapi.tiangolo.com/zh/tutorial/first-steps/)框架搭建的脚手架模板,方便后续其他新项目可以直接使用，但愿该项目能为想学习、想使用FastApi的开发人员提供帮助。
+项目是基于[FastAPI](https://fastapi.tiangolo.com/zh/tutorial/first-steps/)
+框架搭建的脚手架模板,方便后续其他新项目可以直接使用，但愿该项目能为想学习、想使用FastApi的开发人员提供帮助。
 
 
 
@@ -16,7 +14,7 @@
 
 - [fastapi中文文档](https://fastapi.tiangolo.com/zh/tutorial/first-steps/)
 
-### 1.2 目录结构
+### 2.目录结构
 
 ```shell
 ├── README.md  #项目介绍
@@ -52,7 +50,7 @@
     └── local_test.py
 ```
 
-### 1.3 项目启动
+### 3.项目启动
 
 ```sh
 # 使用uvicorn启动
@@ -70,8 +68,10 @@ INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 ```
 
-### 1.4 项目状态
+### 4.项目状态
+
 持续学习开发中...
 
+### 5.项目历程
 
-
+- [Python框架篇(1):FastApi-快速入门](https://mp.weixin.qq.com/s/AY_MGluXAgr27m2nPByJFw)

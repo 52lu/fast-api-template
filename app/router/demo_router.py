@@ -10,7 +10,8 @@ from typing import Union
 
 from fastapi import APIRouter
 # from app.parameter.demo_param import DemoParam
-from app.parameter import DemoParam
+# from app.parameter import DemoParam
+from app import parameter
 
 router = APIRouter(
     prefix="/demo",
@@ -18,8 +19,21 @@ router = APIRouter(
 )
 
 
+@router.post("/query/pydantic/verify")
+async def bodyReceive(body: parameter.PydanticVerifyParam):
+    """
+    pydantic模型验证-演示
+    """
+    return {
+        "msg": "pydantic模型验证",
+        "result": {
+            "body": body,
+        }
+    }
+
+
 @router.post("/query/body/receive")
-async def bodyReceive(body: DemoParam):
+async def bodyReceive(body: parameter.DemoParam):
     """
     请求体参数接受-演示
     """
