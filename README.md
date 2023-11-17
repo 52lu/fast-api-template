@@ -75,3 +75,4 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 ### 5.项目历程
 
 - [Python框架篇(1):FastApi-快速入门](https://mp.weixin.qq.com/s/AY_MGluXAgr27m2nPByJFw)
+- [Python框架篇(2):FastApi-参数接收和验证](https://mp.weixin.qq.com/s/J2_gJxJk2VLfMXgoH1l8Cw)
