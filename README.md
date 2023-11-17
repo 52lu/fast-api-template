@@ -52,6 +52,14 @@
 
 ### 3.项目启动
 
+#### 3.1 安装依赖
+
+```shell
+➜ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple'
+```
+
+#### 3.2 启动命令
+
 ```sh
 # 使用uvicorn启动
 ➜ uvicorn app.main:app
