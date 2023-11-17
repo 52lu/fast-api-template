@@ -10,9 +10,8 @@ from enum import Enum
 from typing import Union, Optional, List, Dict
 
 # 导入pydantic对应的模型基类
-from pydantic import BaseModel, constr, conint, validator, EmailStr
-
-from pydantic import EmailStr, AnyHttpUrl, NegativeFloat, PositiveFloat, PositiveInt, conint
+from pydantic import BaseModel, constr, validator, EmailStr, conint
+import email_validator
 
 
 class DemoParam(BaseModel):

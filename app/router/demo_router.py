@@ -9,8 +9,6 @@
 from typing import Union
 
 from fastapi import APIRouter
-# from app.parameter.demo_param import DemoParam
-# from app.parameter import DemoParam
 from app import parameter
 
 router = APIRouter(
