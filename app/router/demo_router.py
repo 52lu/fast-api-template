@@ -19,6 +19,20 @@ router = APIRouter(
 )
 
 
+@router.post("/query/pydantic/multiParamReceive")
+async def multipleParamReceive(body: parameter.PydanticVerifyParam, order_id: int):
+    """
+    请求体和查询参数结合使用-演示
+    """
+    return {
+        "msg": "请求体和查询参数结合使用",
+        "result": {
+            "body": body,
+            "order_id": order_id,
+        }
+    }
+
+
 @router.post("/query/pydantic/verify")
 async def bodyReceive(body: parameter.PydanticVerifyParam):
     """
