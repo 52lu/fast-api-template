@@ -17,43 +17,23 @@ router = APIRouter(
 )
 
 
-@router.post("/query/pydantic/multiParamReceive")
-async def multipleParamReceive(body: parameter.PydanticVerifyParam, order_id: int):
+@router.get("/path/test")
+async def pathParamReceive2():
     """
-    请求体和查询参数结合使用-演示
+    路径参数接收-演示-不带路径参数
     """
     return {
-        "msg": "请求体和查询参数结合使用",
-        "result": {
-            "body": body,
-            "order_id": order_id,
-        }
+        "msg": "hello",
     }
 
 
-@router.post("/query/pydantic/verify")
-async def bodyReceive(body: parameter.PydanticVerifyParam):
+@router.get("/path/{order_id}")
+async def pathParamReceive(order_id: int):
     """
-    pydantic模型验证-演示
-    """
-    return {
-        "msg": "pydantic模型验证",
-        "result": {
-            "body": body,
-        }
-    }
-
-
-@router.post("/query/body/receive")
-async def bodyReceive(body: parameter.DemoParam):
-    """
-    请求体参数接受-演示
+    路径参数接收-演示-带路径参数
     """
     return {
-        "msg": "请求体参数接受",
-        "result": {
-            "body": body,
-        }
+        "接受结果": order_id,
     }
 
 
@@ -72,21 +52,55 @@ async def queryParamReceive(username: str, sex: str = '男', city: Union[str, No
     }
 
 
-@router.get("/path/test")
-async def pathParamReceive2():
+@router.post("/query/body/receive")
+async def bodyReceive(body: parameter.DemoParam):
     """
-    路径参数接收-演示-不带路径参数
+    请求体参数接受-演示
     """
     return {
-        "msg": "hello",
+        "msg": "请求体参数接受",
+        "result": {
+            "body": body,
+        }
     }
 
 
-@router.get("/path/{order_id}")
-async def pathParamReceive(order_id: int):
+@router.post("/query/pydantic/verify")
+async def bodyReceive(body: parameter.PydanticVerifyParam):
     """
-    路径参数接收-演示-带路径参数
+    pydantic模型验证-演示
     """
     return {
-        "接受结果": order_id,
+        "msg": "pydantic模型验证",
+        "result": {
+            "body": body,
+        }
+    }
+
+
+@router.post("/query/pydantic/paramMixReceive")
+async def multipleParamReceive(body: parameter.PydanticVerifyParam, order_id: int):
+    """
+    请求体和查询参数混合使用-演示
+    """
+    return {
+        "msg": "请求体和查询参数结合使用",
+        "result": {
+            "body": body,
+            "order_id": order_id,
+        }
+    }
+
+
+@router.post("/query/pydantic/multipleParamReceive")
+async def multipleParamReceive(student: parameter.StudentParam, classInfo: parameter.ClassInfoParam):
+    """
+    请求体-多参数接收-演示
+    """
+    return {
+        "msg": "请求体-多参数接收",
+        "result": {
+            "student": student,
+            "classInfo": classInfo,
+        }
     }

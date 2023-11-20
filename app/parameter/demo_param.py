@@ -7,10 +7,10 @@
 @Date    ：2023/11/16 17:38 
 """
 from enum import Enum
-from typing import Union, Optional, List, Dict
+from typing import Union, Optional, List, Dict, Any
 
 # 导入pydantic对应的模型基类
-from pydantic import BaseModel, constr, validator, EmailStr, conint
+from pydantic import BaseModel, constr, validator, EmailStr, conint, Field
 import email_validator
 
 
@@ -18,9 +18,22 @@ class DemoParam(BaseModel):
     """
     请求体参数对应的模型
     """
-    user_name: str
+    user_name: str | None = Field(default=None, title="用户姓名")
     age: int
     city: Union[str, None]
+
+    class Config:
+        """
+         参数示例
+        """
+        schema_extra = {
+            "example": {
+                "user_name": "张三",
+                "age": 89,
+                "city": "北京"
+
+            }
+        }
 
 
 class GenderEnum(str, Enum):
@@ -54,3 +67,21 @@ class PydanticVerifyParam(BaseModel):
         if value.find("傻") > -1:
             raise ValueError("user_name不能包含敏感词")
         return value
+
+
+class StudentParam(BaseModel):
+    """
+    学生信息
+    """
+    name: constr(min_length=2, max_length=4)  # 长度
+    age: conint(ge=18, le=30)  # 整数范围：18 <= age <= 30
+    class_name: str  # 班级名称
+
+
+class ClassInfoParam(BaseModel):
+    """
+    班级信息
+    """
+    class_name: str  # 班级名称
+    class_num: int  # 班级人数
+    teacher_name: str  # 老师名称
