@@ -6,10 +6,14 @@
 @Author  ：Mr.LiuQHui
 @Date    ：2023/11/13 17:45
 """
+import json
 from typing import Union
 
 from fastapi import APIRouter
-from app import parameter
+from fastapi.encoders import jsonable_encoder
+
+from app.types import request
+from app.utils import logger
 
 router = APIRouter(
     prefix="/demo",
@@ -53,7 +57,7 @@ async def queryParamReceive(username: str, sex: str = '男', city: Union[str, No
 
 
 @router.post("/query/body/receive")
-async def bodyReceive(body: parameter.DemoParam):
+async def bodyReceive(body: request.DemoParam):
     """
     请求体参数接受-演示
     """
@@ -66,7 +70,7 @@ async def bodyReceive(body: parameter.DemoParam):
 
 
 @router.post("/query/pydantic/verify")
-async def bodyReceive(body: parameter.PydanticVerifyParam):
+async def bodyReceive(body: request.PydanticVerifyParam):
     """
     pydantic模型验证-演示
     """
@@ -79,7 +83,7 @@ async def bodyReceive(body: parameter.PydanticVerifyParam):
 
 
 @router.post("/query/pydantic/paramMixReceive")
-async def multipleParamReceive(body: parameter.PydanticVerifyParam, order_id: int):
+async def multipleParamReceive(body: request.PydanticVerifyParam, order_id: int):
     """
     请求体和查询参数混合使用-演示
     """
@@ -93,14 +97,33 @@ async def multipleParamReceive(body: parameter.PydanticVerifyParam, order_id: in
 
 
 @router.post("/query/pydantic/multipleParamReceive")
-async def multipleParamReceive(student: parameter.StudentParam, classInfo: parameter.ClassInfoParam):
+async def multipleParamReceive(student: request.StudentParam, classInfo: request.ClassInfoParam):
     """
     请求体-多参数接收-演示
     """
+    #  orjson.dumps(stu).decode("utf-8")
+    # logger.info("multipleParamReceive入参信息:%s",
+    #             orjson.dumps({"student": student, "classInfo": classInfo}).decode("utf-8"))
+    logger.info("multipleParamReceive入参信息:%s",
+                json.dumps({"student": jsonable_encoder(student), "classInfo": jsonable_encoder(classInfo)}))
+
     return {
         "msg": "请求体-多参数接收",
         "result": {
             "student": student,
             "classInfo": classInfo,
+        }
+    }
+
+
+@router.post("/query/pydantic/fieldUse")
+async def fieldUse(param: request.FieldParam):
+    """
+    请求体-多参数接收-演示
+    """
+    return {
+        "msg": "field使用-示例",
+        "result": {
+            "param": param,
         }
     }

@@ -8,3 +8,4 @@
 """
 
 from .str_util import StringUtil
+from app.utils.log import logger

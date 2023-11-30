@@ -6,8 +6,9 @@
 @Author  ：Mr.LiuQHui
 @Date    ：2023/11/16 17:38 
 """
+import dataclasses
 from enum import Enum
-from typing import Union, Optional, List, Dict, Any
+from typing import Union, Optional, List, Dict
 
 # 导入pydantic对应的模型基类
 from pydantic import BaseModel, constr, validator, EmailStr, conint, Field
@@ -85,3 +86,10 @@ class ClassInfoParam(BaseModel):
     class_name: str  # 班级名称
     class_num: int  # 班级人数
     teacher_name: str  # 老师名称
+
+
+class FieldParam(BaseModel):
+    """
+    Field使用示例
+    """
+    name: str = Field(default=None, title="姓名", max_length=4)

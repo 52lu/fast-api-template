@@ -8,13 +8,13 @@
 项目是基于[FastAPI](https://fastapi.tiangolo.com/zh/tutorial/first-steps/)
 框架搭建的脚手架模板,方便后续其他新项目可以直接使用，但愿该项目能为想学习、想使用FastApi的开发人员提供帮助。
 
-
-
-> <span style="color: red; ">@注: 初次学习使用fastapi框架，编码规范和使用方法，仅供参考</span>
+> <span style="color: red; ">@提示: 由于本人工作中常用的语言是PHP和Go，所以框架中的编码规范，并没有严格按照Python官方指定的规范，特别是变量名和函数名~</span>
 
 - [fastapi中文文档](https://fastapi.tiangolo.com/zh/tutorial/first-steps/)
 
 ### 2.目录结构
+
+> <span style="color: red; ">@注: 下面目录仅供参考，在整个项目未开发结束,会有部分调整。</span>
 
 ```shell
 ├── README.md  #项目介绍
@@ -37,8 +37,10 @@
 │   │   ├── __init__.py
 │   │   ├── admin_router.py # 后台接口
 │   │   └── demo_router.py # 演示接口
-│   ├── parameter # 声明参数对应的Pydantic模型
-│   │   └── __init__.py
+│   ├── types # 声明入参和出参对应的Pydantic模型
+│   │   ├── __init__.py
+│   │   ├── request # 入参模型
+│   │   └── response # 出参模型
 │   ├── service # 就具体业务实现逻辑
 │   │   ├── __init__.py
 │   └── utils # 工具类
@@ -84,3 +86,4 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 
 - [Python框架篇(1):FastApi-快速入门](https://mp.weixin.qq.com/s/AY_MGluXAgr27m2nPByJFw)
 - [Python框架篇(2):FastApi-参数接收和验证](https://mp.weixin.qq.com/s/J2_gJxJk2VLfMXgoH1l8Cw)
+
