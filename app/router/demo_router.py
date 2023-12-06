@@ -13,6 +13,7 @@ from fastapi import APIRouter
 from fastapi.encoders import jsonable_encoder
 
 from app.types import request
+from app.types import response
 from app.utils import logger
 
 router = APIRouter(
@@ -116,14 +117,38 @@ async def multipleParamReceive(student: request.StudentParam, classInfo: request
     }
 
 
-@router.post("/query/pydantic/fieldUse")
-async def fieldUse(param: request.FieldParam):
+@router.post("/query/pydantic/nestedModel")
+async def nestedModelDemo(param: request.NestedParam):
     """
-    请求体-多参数接收-演示
+    请求体-嵌套模型接收-演示
     """
     return {
-        "msg": "field使用-示例",
+        "msg": "嵌套模型接收使用-示例",
         "result": {
             "param": param,
         }
     }
+
+
+@router.post("/query/pydantic/fieldDemo", summary="字段field演示")
+async def fieldDemo(param: request.FieldParam):
+    """
+    请求体-字段field-演示
+    """
+    return {
+        "msg": "嵌套模型接收使用-示例",
+        "result": {
+            "param": param,
+        }
+    }
+
+
+@router.post("/resp/demo", summary="响应模型示例")
+async def respDemo(param: request.FieldParam) -> response.HttpResponse:
+    """
+    响应模型示例-演示
+    """
+    if "游戏" in param.likes:
+        return response.ResponseFail("禁止玩游戏~")
+
+    return response.ResponseSuccess(param)

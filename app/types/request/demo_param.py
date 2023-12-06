@@ -6,6 +6,7 @@
 @Author  ：Mr.LiuQHui
 @Date    ：2023/11/16 17:38 
 """
+
 import dataclasses
 from enum import Enum
 from typing import Union, Optional, List, Dict
@@ -85,11 +86,21 @@ class ClassInfoParam(BaseModel):
     """
     class_name: str  # 班级名称
     class_num: int  # 班级人数
+
+
+class NestedParam(BaseModel):
+    """嵌套模型"""
+    teacher_id: int  # 老师id
     teacher_name: str  # 老师名称
+    class_list: List[ClassInfoParam]  # 老师下班级列表
 
 
 class FieldParam(BaseModel):
     """
     Field使用示例
     """
-    name: str = Field(default=None, title="姓名", max_length=4)
+    name: str = Field(default='', max_length=4, description="填写姓名", example="张三")
+    age: int = Field(default='', gt=18, description="填写年龄,必须大于18", example=20)
+    phone: str = Field(default='', description="填写手机号", example="17600000000", regex=r'^1\d{10}$')
+    likes: List[str] = Field(default='[]', description="填写爱好", example=["篮球", "足球"], min_items=2,
+                             unique_items=True)
