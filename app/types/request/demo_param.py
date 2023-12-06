@@ -7,13 +7,11 @@
 @Date    ：2023/11/16 17:38 
 """
 
-import dataclasses
 from enum import Enum
 from typing import Union, Optional, List, Dict
 
 # 导入pydantic对应的模型基类
 from pydantic import BaseModel, constr, validator, EmailStr, conint, Field
-import email_validator
 
 
 class DemoParam(BaseModel):
@@ -99,8 +97,8 @@ class FieldParam(BaseModel):
     """
     Field使用示例
     """
-    name: str = Field(default='', max_length=4, description="填写姓名", example="张三")
-    age: int = Field(default='', gt=18, description="填写年龄,必须大于18", example=20)
-    phone: str = Field(default='', description="填写手机号", example="17600000000", regex=r'^1\d{10}$')
-    likes: List[str] = Field(default='[]', description="填写爱好", example=["篮球", "足球"], min_items=2,
+    name: str = Field(default='', max_length=4, description="填写姓名", examples=["张三"])
+    age: int = Field(default='', gt=18, description="填写年龄,必须大于18", examples=[20])
+    phone: str = Field(default='', description="填写手机号", examples=["17600000000"], regex=r'^1\d{10}$')
+    likes: List[str] = Field(description="填写爱好", examples=[["篮球", "足球"]], min_items=2,
                              unique_items=True)

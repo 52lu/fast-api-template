@@ -6,7 +6,7 @@
 ### 1.项目介绍
 
 项目是基于[FastAPI](https://fastapi.tiangolo.com/zh/tutorial/first-steps/)
-框架搭建的脚手架模板,方便后续其他新项目可以直接使用，但愿该项目能为想学习、想使用FastApi的开发人员提供帮助。
+学习使用FastAPI框架，并搭建一个项目模板,方便后续其他新项目可以直接使用，但愿该项目能为想学习、想使用FastApi的开发人员提供帮助。
 
 > <span style="color: red; ">@提示:
 > 由于本人工作中常用的语言是PHP和Go，所以框架中的编码规范，并没有严格按照Python官方指定的规范，特别是变量名和函数名~</span>
@@ -83,7 +83,7 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 
 持续学习开发中...
 
-### 5.项目历程
+### 5.项目历程  
 
 - [Python框架篇(1):FastApi-快速入门](https://mp.weixin.qq.com/s/AY_MGluXAgr27m2nPByJFw)
 - [Python框架篇(2):FastApi-参数接收和验证](https://mp.weixin.qq.com/s/J2_gJxJk2VLfMXgoH1l8Cw)

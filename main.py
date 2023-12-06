@@ -13,7 +13,7 @@ from fastapi import FastAPI
 from app.router import RegisterRouterList
 
 # 实例化
-app = FastAPI(redoc_url=None, docs_url="/apidoc", title="FastAPI模板")
+app = FastAPI(redoc_url=None, docs_url="/apidoc", title="FastAPI学习")
 # 加载路由
 for item in RegisterRouterList:
     app.include_router(item.router)
