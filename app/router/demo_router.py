@@ -143,7 +143,11 @@ async def fieldDemo(param: request.FieldParam):
     }
 
 
-@router.post("/resp/demo", summary="响应模型示例",response_model_exclude_unset=True)
+@router.post(
+    "/resp/demo",
+    summary="响应模型示例",
+    response_model_exclude_unset=True
+)
 async def respDemo(param: request.FieldParam) -> response.HttpResponse:
     """
     响应模型示例-演示

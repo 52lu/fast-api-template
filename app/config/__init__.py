@@ -6,3 +6,4 @@
 @Author  ：Mr.LiuQHui
 @Date    ：2023/11/13 18:24 
 """
+from .validate_template_config import validateChineseDict, keyErrorChineseDict

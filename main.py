@@ -6,18 +6,22 @@
 @Author  ：Mr.LiuQHui
 @Date    ：2023/11/13 17:44 
 """
-import argparse
 
 import uvicorn
 from fastapi import FastAPI
+
+from app import errors
 from app.router import RegisterRouterList
 
 # 实例化
-app = FastAPI(redoc_url=None, docs_url="/apidoc", title="FastAPI学习")
+server = FastAPI(redoc_url=None, docs_url="/apidoc", title="FastAPI学习")
+
+# 注册自定义错误处理器
+errors.registerCustomErrorHandle(server)
+
 # 加载路由
 for item in RegisterRouterList:
-    app.include_router(item.router)
-
+    server.include_router(item.router)
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(server, host="0.0.0.0", port=8000)

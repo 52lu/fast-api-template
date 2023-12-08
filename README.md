@@ -18,7 +18,6 @@
 > <span style="color: red; ">@注: 下面目录仅供参考，在整个项目未开发结束,会有部分调整。</span>
 
 ```shell
-├── README.md  #项目介绍
 ├── app
 │   ├── __init__.py
 │   ├── config  # 配置相关
@@ -29,7 +28,8 @@
 │   │   └── __init__.py
 │   ├── dependencies  # 封装被依赖函数
 │   │   └── __init__.py
-│   ├── main.py # 主文件
+│   ├── errors  # 异常处理
+│   │   └── __init__.py
 │   ├── middleware # 中间件
 │   │   └── __init__.py
 │   ├── models # 数据模型文件，和表结构对应
@@ -48,7 +48,9 @@
 │       ├── __init__.py
 │       └── str_util.py
 ├── requirements.txt #依赖文件
-├── tests # 单元测试目录
+├── README.md  #项目介绍
+├── main.py # 入口文件
+└── tests # 单元测试目录
     ├── __init__.py
     └── local_test.py
 ```
