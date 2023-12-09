@@ -156,3 +156,13 @@ async def respDemo(param: request.FieldParam) -> response.HttpResponse:
         return response.ResponseFail("禁止玩游戏~")
 
     return response.ResponseSuccess(param)
+
+
+@router.get("/error/demo")
+async def errorDemo() -> response.HttpResponse:
+    """
+    异常示例-演示
+    """
+    result = "name{} age{}".format("张三")
+
+    return response.ResponseSuccess(result)
