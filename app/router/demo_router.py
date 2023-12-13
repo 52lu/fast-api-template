@@ -7,9 +7,11 @@
 @Date    ：2023/11/13 17:45
 """
 import json
-from typing import Union
+import random
+import time
+from typing import Union, Annotated
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Header
 from fastapi.encoders import jsonable_encoder
 
 from app.types import request
@@ -166,3 +168,19 @@ async def errorDemo() -> response.HttpResponse:
     result = "name{} age{}".format("张三")
 
     return response.ResponseSuccess(result)
+
+
+@router.get("/middle/useTime")
+async def middleUseTime() -> response.HttpResponse:
+    """
+    中间件使用-演示
+    """
+    seconds = random.randint(500, 5000) / 1000
+    print("暂停时间:", seconds)
+    time.sleep(seconds)
+    return response.ResponseSuccess(seconds)
+
+
+@router.get("/header/test")
+async def read_items(x_token: Annotated[list[str] | None, Header()] = None):
+    return {"X-Token values": x_token}
