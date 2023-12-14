@@ -35,7 +35,7 @@ class JwtManageUtil(object):
     JWT处理类
     """
 
-    def __init__(self, secretKey: str, algorithm: str = "HS256", expired: int = 2,
+    def __init__(self, secretKey: str, algorithm: str = "HS256", expired: int = 60,
                  chinaTimeZone=constant.ChinaTimeZone, iss: str = "猿码记"):
         """
         初始化

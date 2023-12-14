@@ -11,9 +11,11 @@ from fastapi import FastAPI
 from .test_middleware import TestMiddleware
 from .token_middleware import TokenMiddleware
 from .usetime_middleware import UseTimeMiddleware
+from .jwt_middleware import JwtMiddleware
 
 # 定义注册顺序
 middlewareList = [
+    JwtMiddleware,  # jwt
     UseTimeMiddleware,  # 添加耗时请求中间件
     TokenMiddleware,  # 添加token验证中间件
     TestMiddleware  # 测试中间件
