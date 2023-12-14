@@ -7,9 +7,10 @@
 @Date    ：2023/11/13 18:25 
 """
 from fastapi import FastAPI
-from .usetime_middleware import UseTimeMiddleware
-from .token_middleware import TokenMiddleware
+
 from .test_middleware import TestMiddleware
+from .token_middleware import TokenMiddleware
+from .usetime_middleware import UseTimeMiddleware
 
 # 定义注册顺序
 middlewareList = [
@@ -24,5 +25,5 @@ def registerMiddlewareHandle(server: FastAPI):
     # 倒序中间件
     middlewareList.reverse()
     # 遍历注册
-    for middleware in middlewareList:
-        server.add_middleware(middleware)
+    for _middleware in middlewareList:
+        server.add_middleware(_middleware)
