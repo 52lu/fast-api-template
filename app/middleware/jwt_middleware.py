@@ -15,16 +15,18 @@ from starlette.responses import Response
 
 from app.types import response, JwtData
 from app.utils import JwtManageUtil
+from app.config import appSettings
+
 
 # 后期做配置，这里临时演示
-secret_key = "abcd12345@abcdef"
+# secret_key = "abcd12345@abcdef"
 
 # 不检查
-noCheckTokenPathList = [
-    "/apidoc",
-    "/openapi.json",
-    "/api/user/login"
-]
+# noCheckTokenPathList = [
+#     "/apidoc",
+#     "/openapi.json",
+#     "/api/user/login"
+# ]
 
 
 class JwtMiddleware(BaseHTTPMiddleware):
@@ -32,11 +34,19 @@ class JwtMiddleware(BaseHTTPMiddleware):
 
     def __init__(self, app):
         super().__init__(app)
-        self.jwtUtil = JwtManageUtil(secretKey=secret_key)
+        self.jwtUtil = JwtManageUtil(
+            secretKey=appSettings.jwt_secret_key,
+            algorithm=appSettings.jwt_algorithm,
+            expired=appSettings.jwt_expired,
+            iss=appSettings.jwt_iss,
+        )
 
     async def dispatch(self, request: Request, call_next):
         # 判断路由是否需要验证
         path = request.url.path
+        # 不检查的路由
+        noCheckTokenPathList = appSettings.jwt_no_check_uris.split(",")
+        print("不检查的路由:", noCheckTokenPathList)
         if path in noCheckTokenPathList:
             return await call_next(request)
         # 获取token

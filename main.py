@@ -11,19 +11,19 @@ import uvicorn
 from fastapi import FastAPI
 
 from app import errors, middleware
+from app.config import appSettings
 from app.router import RegisterRouterList
 
 # 实例化
 server = FastAPI(redoc_url=None, docs_url="/apidoc", title="FastAPI学习")
-
+print(appSettings)
 # 注册自定义错误处理器
 errors.registerCustomErrorHandle(server)
-# # 注册中间件
+# 注册中间件
 middleware.registerMiddlewareHandle(server)
-
 # 加载路由
 for item in RegisterRouterList:
     server.include_router(item.router)
 
 if __name__ == "__main__":
-    uvicorn.run(server, host="0.0.0.0", port=8000)
+    uvicorn.run(server, host="0.0.0.0", port=appSettings.app_port)
