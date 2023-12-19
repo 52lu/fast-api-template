@@ -1,8 +1,8 @@
-email_validator==2.1.0.post1
-fastapi~=0.105.0
-pydantic==1.10.11
+fastapi==0.105.0
+pydantic==2.5.2
+pydantic_settings==2.1.0
+PyJWT==2.8.0
+python-dotenv==1.0.0
+pytz==2023.3.post1
+starlette==0.34.0
 uvicorn==0.24.0.post1
-starlette~=0.26.1
-pyjwt~=2.8.0
-pytz~=2023.3.post1
-python-dotenv~=1.0.0

@@ -16,7 +16,6 @@ from app.router import RegisterRouterList
 
 # 实例化
 server = FastAPI(redoc_url=None, docs_url="/apidoc", title="FastAPI学习")
-print(appSettings)
 # 注册自定义错误处理器
 errors.registerCustomErrorHandle(server)
 # 注册中间件

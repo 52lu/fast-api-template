@@ -24,8 +24,8 @@ class HttpResponse(BaseModel):
     """http统一响应"""
     code: int = Field(default=200)  # 响应码
     msg: str = Field(default="处理成功")  # 响应信息
-    data: Any | None  # 具体数据
-    additional: Additional  # 额外信息
+    data: Any = None  # 具体数据
+    additional: Additional = None  # 额外信息
 
 
 def ResponseSuccess(resp: Any) -> HttpResponse:
