@@ -48,6 +48,7 @@ def parseCliArgument():
     # 解析命令行参数
     args = parser.parse_args()
     # 设置环境变量
+    # uvicorn模式启动，读取的.env*里面的APP_ENV
     os.environ["APP_ENV"] = args.env
 
 
