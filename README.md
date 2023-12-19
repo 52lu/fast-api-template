@@ -66,8 +66,8 @@
 #### 3.2 启动命令
 
 ```sh
-# 使用uvicorn启动
-➜ uvicorn app.main:app
+# xxx/xxx/fast-api-template下，使用uvicorn启动
+➜ uvicorn main:server
 INFO:     Started server process [36375]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
