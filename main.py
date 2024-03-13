@@ -9,6 +9,7 @@
 
 import uvicorn
 from fastapi import FastAPI
+from starlette.staticfiles import StaticFiles
 
 from app import errors, middleware
 from app.config import appSettings
@@ -16,6 +17,10 @@ from app.router import RegisterRouterList
 
 # 实例化
 server = FastAPI(redoc_url=None, docs_url="/apidoc", title="FastAPI学习")
+
+# 挂载静态资源目录
+server.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 # 注册自定义错误处理器
 errors.registerCustomErrorHandle(server)
