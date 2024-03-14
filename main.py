@@ -21,7 +21,6 @@ server = FastAPI(redoc_url=None, docs_url="/apidoc", title="FastAPI学习")
 # 挂载静态资源目录
 server.mount("/static", StaticFiles(directory="static"), name="static")
 
-
 # 注册自定义错误处理器
 errors.registerCustomErrorHandle(server)
 # 注册中间件
