@@ -1,7 +1,7 @@
 ## fast-api-template
 
 [![Python](https://img.shields.io/badge/Python-3.10+-yellow?style=for-the-badge&logo=python&logoColor=white&labelColor=101010)](https://python.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.105.0+-00a393?style=for-the-badge&logo=fastapi&logoColor=white&labelColor=101010)](https://fastapi.tiangolo.com)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.110.0-00a393?style=for-the-badge&logo=fastapi&logoColor=white&labelColor=101010)](https://fastapi.tiangolo.com)
 
 ### 1.项目介绍
 
@@ -37,15 +37,22 @@
 │   │   ├── __init__.py
 │   │   ├── admin_router.py # 后台接口
 │   │   └── demo_router.py # 演示接口
-│   ├── types # 声明入参和出参对应的Pydantic模型
-│   │   ├── __init__.py
-│   │   ├── request # 入参模型
-│   │   └── response # 出参模型
+│   ├── types # 声明入参和出参对应的Pydantic模型
+│   │   ├── __init__.py
+│   │   ├── request # 入参模型
+│   │   └── response # 出参模型
 │   ├── service # 就具体业务实现逻辑
 │   │   ├── __init__.py
 │   └── utils # 工具类
 │       ├── __init__.py
 │       └── str_util.py
+├── bin # 相关脚本
+│   └── genmodels.sh # 生成model脚本
+├── logs # 日志目录
+│   └── app.log
+├── static # 静态资源目录
+│   ├── a.txt
+│   └── test.jpg
 ├── requirements.txt #依赖文件
 ├── README.md  #项目介绍
 ├── main.py # 入口文件

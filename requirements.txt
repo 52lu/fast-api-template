@@ -1,8 +1,11 @@
-fastapi==0.105.0
-pydantic==2.5.2
-pydantic_settings==2.1.0
+fastapi==0.110.0
+pydantic==2.6.4
+pydantic_settings==2.2.1
 PyJWT==2.8.0
-python-dotenv==1.0.0
+PyJWT==2.8.0
+python-dotenv==1.0.1
 pytz==2023.3.post1
-starlette==0.34.0
-uvicorn==0.24.0.post1
+SQLAlchemy==1.4.51
+starlette==0.36.3
+uvicorn==0.29.0
+sqlacodegen==3.0.0rc3

@@ -53,4 +53,4 @@ def parseCliArgument():
 
 
 # 创建配置实例
-appSettings = getAppConfig()
+globalAppSettings = getAppConfig()

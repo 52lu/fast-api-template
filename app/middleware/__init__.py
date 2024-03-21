@@ -12,7 +12,7 @@ from .test_middleware import TestMiddleware
 from .token_middleware import TokenMiddleware
 from .usetime_middleware import UseTimeMiddleware
 from .jwt_middleware import JwtMiddleware
-from app.config import appSettings
+from app.config import globalAppSettings
 
 # 定义注册顺序
 middlewareList = [
@@ -27,7 +27,7 @@ def registerMiddlewareHandle(server: FastAPI):
     """ 注册中间件 """
 
     # jwt未开启则不注册
-    if appSettings.jwt_enable is False:
+    if globalAppSettings.jwt_enable is False:
         middlewareList.remove(JwtMiddleware)
 
     # 倒序中间件
