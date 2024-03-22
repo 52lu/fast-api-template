@@ -16,7 +16,7 @@ from app.config import globalAppSettings
 if __name__ == "__main__":
     print("打印项目配置:", globalAppSettings)
     # 实例化
-    server = FastAPI(redoc_url=None, docs_url="/apidoc", title="FastAPI学习")
+    server = FastAPI(redoc_url=None, docs_url="/apidoc", title=globalAppSettings.app_name)
     # 初始化项目
     bootstrap.Init(server)
     # 使用 python main.py 启动服务
