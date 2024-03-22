@@ -9,7 +9,7 @@
 
 from contextlib import contextmanager
 
-from app.initialize import GlobalSessionLocal
+from app.bootstrap import GlobalSessionLocal
 
 
 @contextmanager

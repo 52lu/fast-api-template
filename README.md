@@ -69,22 +69,25 @@
 ➜ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-#### 3.2 启动命令
+#### 3.2 服务启动
 
 ```sh
-# xxx/xxx/fast-api-template下，使用uvicorn启动
-➜ uvicorn main:server
-INFO:     Started server process [36375]
+# 启动: 可指定 环境配置文件test(.env.test)、prod(.env.prod)
+➜  ./server.sh start --env=test
+准备启动应用程序...
+运行脚本: python main.py  --env=test
+获取配置文件:  .env.test
+打印项目配置: ...
+INFO:     Started server process [36836]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Uvicorn running on http://0.0.0.0:8082 (Press CTRL+C to quit)
 
-# 使用python
-➜  python main.py
-INFO:     Started server process [36468]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+# 关闭
+➜  ./server.sh stop 
+
+# 重启
+➜  ./server.sh restart 
 ```
 
 ### 4.项目状态
