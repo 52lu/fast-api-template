@@ -24,13 +24,13 @@ echo "db_type: $db_type"
 output_file="$2"
 case "$db_type" in
     mysql)
-        output_file="${output_file}.gen.py"
+        output_file="${output_file}_gen.py"
         ;;
     postgresql)
-        output_file="${output_file}.gen.py"
+        output_file="${output_file}_gen.py"
         ;;
     mongodb)
-        output_file="${output_file}.gen.py"
+        output_file="${output_file}_gen.py"
         ;;
     *)
         echo "数据库类型只能是[mysql/postgresql/mongodb] database type: $db_type"
