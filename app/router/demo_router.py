@@ -11,7 +11,7 @@ import random
 import time
 from typing import Union, Annotated
 
-from fastapi import APIRouter, Header
+from fastapi import APIRouter, Header, Cookie
 from fastapi.encoders import jsonable_encoder
 
 from app.types import request
@@ -181,6 +181,7 @@ async def middleUseTime() -> response.HttpResponse:
     return response.ResponseSuccess(seconds)
 
 
-@router.get("/header/test")
-async def read_items(x_token: Annotated[list[str] | None, Header()] = None):
-    return {"X-Token values": x_token}
+
+# @router.get("/header/param")
+# async def headParam(x_token: Annotated[list[str] | None, Header()] = None):
+#     return {"X-Token values": x_token}
