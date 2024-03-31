@@ -8,9 +8,7 @@
 """
 import os
 from typing import Annotated
-
 from fastapi import APIRouter, Cookie, Request, Header, Form, UploadFile
-
 from app.types import response
 
 router = APIRouter(prefix="/param", tags=["更多参数接收示例"])
