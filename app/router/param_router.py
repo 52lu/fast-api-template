@@ -6,9 +6,12 @@
 @Author  ：Mr.LiuQHui
 @Date    ：2024/3/27 22:29
 """
+import os
 from typing import Annotated
 
-from fastapi import APIRouter, Cookie, Request
+from fastapi import APIRouter, Cookie, Request, Header, Form, UploadFile
+
+from app.types import response
 
 router = APIRouter(prefix="/param", tags=["更多参数接收示例"])
 
@@ -23,3 +26,52 @@ async def cookieKey(user_name: Annotated[str | None, Cookie()] = None):
 async def cookieParams(request: Request):
     """接收cookie值"""
     return {"cookies": request.cookies}
+
+
+@router.get("/header/key")
+async def headerKey(x_platform: Annotated[str | None, Header()] = None):
+    """ 从header中获取指定key"""
+    return {"x_platform": x_platform}
+
+
+@router.get("/header/keys")
+async def headerKey(x_ip: Annotated[list[str] | None, Header()] = None):
+    """ 从header中获取重复key的值"""
+    return {"x_ip": x_ip}
+
+
+@router.post("/form/key")
+async def formKey(username: str = Form(), password: str = Form()) -> response.HttpResponse:
+    """ 接收表单中的参数"""
+    body = {
+        "username": username,
+        "password": password
+    }
+    return response.ResponseSuccess(body)
+
+
+@router.post("/upload/file")
+async def uploadFile(file: UploadFile | None = None, fileType: str = Form()) -> response.HttpResponse:
+    """ 文件上传"""
+    if not file:
+        return response.ResponseFail("文件信息不能为空~")
+
+    try:
+        # 构造保存目录
+        save_path = os.path.join(os.getcwd(), "tmp", fileType)
+        # 不存在则创建目录
+        os.makedirs(save_path, exist_ok=True)
+        # 拼接文件全路径
+        file_path = os.path.join(save_path, file.filename)
+        # 读取文件内容并写入目标文件
+        contents = await file.read()
+        with open(file_path, "wb") as f:
+            f.write(contents)
+        body = {
+            "fileName": file.filename,
+            "fileType": fileType,
+            "size": file.size,
+        }
+        return response.ResponseSuccess(body)
+    except Exception as e:
+        return response.ResponseFail("文件上传失败:" + str(e))
