@@ -10,6 +10,7 @@ import os
 from typing import Annotated
 from fastapi import APIRouter, Cookie, Request, Header, Form, UploadFile
 from app.types import response
+from fastapi.responses import FileResponse
 
 router = APIRouter(prefix="/param", tags=["更多参数接收示例"])
 
@@ -73,3 +74,11 @@ async def uploadFile(file: UploadFile | None = None, fileType: str = Form()) -> 
         return response.ResponseSuccess(body)
     except Exception as e:
         return response.ResponseFail("文件上传失败:" + str(e))
+
+
+@router.get("/file/download")
+async def downloadFile() -> FileResponse:
+    """下载文件"""
+    fileName = "test.pdf"
+    file_path = os.path.join(os.getcwd(), "tmp", fileName)
+    return FileResponse(file_path, filename=fileName)
