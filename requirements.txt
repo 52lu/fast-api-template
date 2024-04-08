@@ -18,6 +18,7 @@ pydantic_core==2.16.3
 PyJWT==2.8.0
 PyMySQL==1.1.0
 python-dotenv==1.0.1
+python-multipart==0.0.9
 pytz==2023.3.post1
 sniffio==1.3.1
 sqlacodegen==3.0.0rc3
