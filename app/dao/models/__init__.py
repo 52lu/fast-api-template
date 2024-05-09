@@ -6,4 +6,5 @@
 @Author  ：Mr.LiuQHui
 @Date    ：2023/11/13 18:24 
 """
+from .mysql_gen import *
 

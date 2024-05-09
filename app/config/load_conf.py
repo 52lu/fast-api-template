@@ -24,7 +24,16 @@ def getEnvFile() -> str:
     if runEnv != "":
         # 当是其他环境时，如测试环境: 加载 .env.test 正式环境: 加载.env.prod
         envFile = f".env.{runEnv}"
-    return envFile
+
+    # 拼上配置文件全路径
+    currentDir = os.getcwd()
+    if currentDir.find("tests") != -1 :
+        # 测试目录运行
+        envPath = os.path.join(currentDir, "../", envFile)
+    else:
+        envPath = os.path.join(currentDir, envFile)
+
+    return envPath
 
 
 @lru_cache
@@ -35,27 +44,22 @@ def getAppConfig() -> config.AppConfigSettings:
     # 获取配置文件
     envFile = getEnvFile()
     print("获取配置文件: ", envFile)
+    # 判断文件是否存在
     # 加载配置
     load_dotenv(envFile)
     # 实例化配置模型
     return config.AppConfigSettings()
 
 
+
 def parseCliArgument():
     """ 解析命令行参数 """
-    import sys
-    # print("解析命令行参数:", sys.argv[0])
-    # if "uvicorn" in sys.argv[0]:
-    #     # TODO 使用uvicorn启动,则解析--env-file文件
-    #     print("使用uvicorn启动....")
-    #     return
     # 使用 argparse 定义命令行参数
     parser = argparse.ArgumentParser(description="命令行参数")
     parser.add_argument("--env", type=str, default="", help="运行环境")
     # 解析命令行参数
     args = parser.parse_args()
     # 设置环境变量
-    # uvicorn模式启动，读取的.env*里面的APP_ENV
     os.environ["APP_ENV"] = args.env
 
 

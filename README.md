@@ -47,7 +47,8 @@
 │       ├── __init__.py
 │       └── str_util.py
 ├── bin # 相关脚本
-│   └── genmodels.sh # 生成model脚本
+│   ├── genmodels.sh # 生成model脚本
+│   └── updateRequirements.sh # 更新项目依赖脚本
 ├── logs # 日志目录
 │   └── app.log
 ├── static # 静态资源目录

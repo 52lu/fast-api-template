@@ -30,6 +30,7 @@ stop() {
     echo "准备关闭应用程序..."
     if [ -f $TMP_PATH/app.pid ]; then
         pid=$(cat $TMP_PATH/app.pid)
+        echo "执行删除进程: kill  $pid"
         kill $pid
         rm $TMP_PATH/app.pid
     else
