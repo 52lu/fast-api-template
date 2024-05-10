@@ -7,7 +7,7 @@
 @Date    ：2023/11/13 17:44 
 """
 
-from app.router import (
+from app.controller import (
     default_router,
     demo_router,
     di_router,

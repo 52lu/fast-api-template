@@ -9,7 +9,7 @@
 import os
 from typing import Annotated
 from fastapi import APIRouter, Cookie, Request, Header, Form, UploadFile
-from app.types import response
+from app import utils
 from fastapi.responses import FileResponse
 
 router = APIRouter(prefix="/param", tags=["更多参数接收示例"])
@@ -29,31 +29,30 @@ async def cookieParams(request: Request):
 
 @router.get("/header/key")
 async def headerKey(x_platform: Annotated[str | None, Header()] = None):
-    """ 从header中获取指定key"""
+    """从header中获取指定key"""
     return {"x_platform": x_platform}
 
 
 @router.get("/header/keys")
 async def headerKey(x_ip: Annotated[list[str] | None, Header()] = None):
-    """ 从header中获取重复key的值"""
+    """从header中获取重复key的值"""
     return {"x_ip": x_ip}
 
 
 @router.post("/form/key")
-async def formKey(username: str = Form(), password: str = Form()) -> response.HttpResponse:
-    """ 接收表单中的参数"""
-    body = {
-        "username": username,
-        "password": password
-    }
-    return response.ResponseSuccess(body)
+async def formKey(username: str = Form(), password: str = Form()) -> utils.HttpResponse:
+    """接收表单中的参数"""
+    body = {"username": username, "password": password}
+    return utils.ResponseSuccess(body)
 
 
 @router.post("/upload/file")
-async def uploadFile(file: UploadFile | None = None, fileType: str = Form()) -> response.HttpResponse:
-    """ 文件上传"""
+async def uploadFile(
+    file: UploadFile | None = None, fileType: str = Form()
+) -> utils.HttpResponse:
+    """文件上传"""
     if not file:
-        return response.ResponseFail("文件信息不能为空~")
+        return utils.ResponseFail("文件信息不能为空~")
 
     try:
         # 构造保存目录
@@ -71,9 +70,9 @@ async def uploadFile(file: UploadFile | None = None, fileType: str = Form()) -> 
             "fileType": fileType,
             "size": file.size,
         }
-        return response.ResponseSuccess(body)
+        return utils.ResponseSuccess(body)
     except Exception as e:
-        return response.ResponseFail("文件上传失败:" + str(e))
+        return utils.ResponseFail("文件上传失败:" + str(e))
 
 
 @router.get("/file/download")

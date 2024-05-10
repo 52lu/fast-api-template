@@ -12,8 +12,9 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
 
-from app.types import response, JwtData
+from app.types import JwtData
 from app.utils import JwtManageUtil
+from app import utils
 from app.config import globalAppSettings
 
 
@@ -29,7 +30,7 @@ from app.config import globalAppSettings
 
 
 class JwtMiddleware(BaseHTTPMiddleware):
-    """ jwt验证中间件 """
+    """jwt验证中间件"""
 
     def __init__(self, app):
         super().__init__(app)
@@ -49,11 +50,12 @@ class JwtMiddleware(BaseHTTPMiddleware):
         if path in noCheckTokenPathList:
             return await call_next(request)
         # 获取token
-        token = request.headers.get('x-token', '')
+        token = request.headers.get("x-token", "")
         if token == "":
             return JSONResponse(
                 status_code=status.HTTP_200_OK,
-                content=jsonable_encoder(response.ResponseFail('token不能为空~')))
+                content=jsonable_encoder(utils.ResponseFail("token不能为空~")),
+            )
 
         # 验证token
         tokenInfo = self.jwtUtil.decode(token, JwtData)
@@ -61,7 +63,8 @@ class JwtMiddleware(BaseHTTPMiddleware):
             # 验证失败
             return JSONResponse(
                 status_code=status.HTTP_200_OK,
-                content=jsonable_encoder(response.ResponseFail(tokenInfo)))
+                content=jsonable_encoder(utils.ResponseFail(tokenInfo)),
+            )
 
         result = await call_next(request)
         print("token解析成功", tokenInfo)

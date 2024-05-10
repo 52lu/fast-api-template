@@ -12,7 +12,9 @@ from .base_dao import getDatabaseSession
 from app.dao.models import YmUser
 
 
-class UserDao(object):
+class UserQueryDao(object):
+    """用户查询类dao"""
+
     @classmethod
     def findByPhone(cls, phone: str) -> YmUser:
         """单条查询示例"""
@@ -40,6 +42,9 @@ class UserDao(object):
                 elif isinstance(value, list):
                     # in查询
                     query = query.filter(getattr(YmUser, column).in_(value))
+                elif isinstance(value, str) and value.find("%") != -1:
+                    # 模糊查询
+                    query = query.filter(getattr(YmUser, column).like(value))
                 else:
                     # 等值查询
                     query = query.filter(getattr(YmUser, column) == value)
@@ -53,3 +58,23 @@ class UserDao(object):
             result = query.all()
 
         return total, result
+
+
+class UserOperateDao(object):
+    """操作用户相关dao"""
+
+    @classmethod
+    def saveUser(cls, user: YmUser) -> YmUser:
+        """添加单条"""
+        with getDatabaseSession(False) as session:
+            session.add(user)
+            session.commit()
+            session.refresh(user)
+        return user
+
+    @classmethod
+    def saveUserList(cls, users: list[YmUser]):
+        """添加单条"""
+        with getDatabaseSession() as session:
+            session.bulk_save_objects(users)
+        return

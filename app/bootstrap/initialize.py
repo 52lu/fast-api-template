@@ -10,7 +10,7 @@ from fastapi import FastAPI
 from starlette.staticfiles import StaticFiles
 
 from app import errors, middleware
-from app.router import RegisterRouterList
+from app.controller import RegisterRouterList
 
 
 def Init(server: FastAPI):
