@@ -35,5 +35,3 @@ def getDatabaseSession(autoCommitByExit=True):
     except Exception as e:
         _session.rollback()
         raise e
-    # finally:
-    #     _session.close()
