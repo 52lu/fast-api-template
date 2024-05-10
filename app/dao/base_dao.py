@@ -20,7 +20,7 @@ engine = create_engine(
 )
 
 # 封装获取会话
-Session = sessionmaker(bind=engine)
+Session = sessionmaker(bind=engine, expire_on_commit=False)
 
 
 @contextmanager

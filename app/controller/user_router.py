@@ -9,19 +9,16 @@
 from fastapi import APIRouter
 
 from app.types import apiproto
+from app.service import usersvc
+from app import utils
 
 router = APIRouter(prefix="/user", tags=["用户相关接口"])
 
 
 @router.post("/list")
-async def userList(body: apiproto.UserListRequest):
+async def userList(param: apiproto.UserListRequest) -> utils.HttpResponse:
     """
     用户列表-演示
     """
-
-    return {
-        "msg": "请求体参数接受",
-        "result": {
-            "body": body,
-        },
-    }
+    data = usersvc.UserListService.getUserList(param)
+    return utils.ResponseSuccess(data)

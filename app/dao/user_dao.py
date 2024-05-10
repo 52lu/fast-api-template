@@ -24,9 +24,7 @@ class UserQueryDao(object):
         return result
 
     @classmethod
-    def findByPage(
-        cls, page: int = 1, pageSize: int = 10, **kwargs
-    ) -> (int, list[YmUser]):
+    def findByPage(cls, page: int = 1, pageSize: int = 10, **kwargs) -> (int, list[YmUser]):
         """分页查询示例"""
         with getDatabaseSession() as session:
             query = session.query(YmUser)
