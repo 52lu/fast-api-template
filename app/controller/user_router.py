@@ -12,7 +12,7 @@ from app.types import apiproto
 from app.service import usersvc
 from app import utils
 
-router = APIRouter(prefix="/user", tags=["用户相关接口"])
+router = APIRouter(prefix="/api/user", tags=["用户相关接口"])
 
 
 @router.post("/list")
