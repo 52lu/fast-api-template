@@ -22,7 +22,7 @@ class UserListService:
         # 拼凑查询信息
         queryDict = {}
         if queryParam.nick_name != "":
-            queryDict["nick_name"] = queryParam.nick_name
+            queryDict["nick_name"] = f"%{queryParam.nick_name}%"
         if queryParam.phone != "":
             queryDict["phone"] = queryParam.phone
 
