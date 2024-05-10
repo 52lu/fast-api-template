@@ -14,10 +14,11 @@ router = APIRouter(prefix="/user", tags=["用户相关接口"])
 
 
 @router.post("/list")
-async def bodyReceive(body: apiproto.U):
+async def userList(body: apiproto.UserListRequest):
     """
-    请求体参数接受-演示
+    用户列表-演示
     """
+
     return {
         "msg": "请求体参数接受",
         "result": {

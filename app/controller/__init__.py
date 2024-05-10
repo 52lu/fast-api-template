@@ -7,17 +7,8 @@
 @Date    ：2023/11/13 17:44 
 """
 
-from app.controller import (
-    default_router,
-    demo_router,
-    di_router,
-    param_router
-)
+
+from app.controller import default_router, demo_router, di_router, param_router
 
 # 定义路由列表
-RegisterRouterList = [
-    default_router,
-    demo_router,
-    di_router,
-    param_router
-]
+RegisterRouterList = [default_router, demo_router, di_router, param_router]
