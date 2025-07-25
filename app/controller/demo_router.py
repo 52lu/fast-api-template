@@ -16,7 +16,8 @@ from fastapi.encoders import jsonable_encoder
 
 from app.types import apiproto
 from app import utils
-from app.utils import logger
+from app.logcore.log import logger
+
 
 router = APIRouter(prefix="/demo", tags=["演示接口"])
 

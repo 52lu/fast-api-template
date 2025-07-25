@@ -33,3 +33,11 @@ class AppConfigSettings(BaseSettings):
     db_max_overflow: int = 10  # 连接池中允许的最大超出连接数
     """redis配置"""
     redis_dsn: RedisDsn = None
+    """日志配置"""
+    log_file: str = "./logs/app.log"  # 日志文件
+    log_level: str = "debug"  # 日志级别
+    log_serialize: bool = True  # 是否序列化成 JSON
+    log_compression: str = "gz"  # 是否日志压缩（zip, tar, gz 等）
+    log_rotation: str = "00:00"  # 日志轮转（按大小、时间、函数）; 大小:500MB, 时间:00:00（每天零点新建文件）
+    log_retention: int = 10  # 日志保留策略，多久自动删;保留7d
+    log_format: str = "{time} {level} {message}"  # 日志格式

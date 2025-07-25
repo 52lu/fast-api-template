@@ -8,18 +8,19 @@
 """
 from fastapi import FastAPI
 
-from .test_middleware import TestMiddleware
+# from .test_middleware import TestMiddleware
 from .token_middleware import TokenMiddleware
 from .usetime_middleware import UseTimeMiddleware
 from .jwt_middleware import JwtMiddleware
+from .request_middleware import RequestMiddleware
 from app.config import globalAppSettings
 
 # 定义注册顺序
 middlewareList = [
+    RequestMiddleware,  # 请求记录
     JwtMiddleware,  # jwt
-    UseTimeMiddleware,  # 添加耗时请求中间件
+    # UseTimeMiddleware,  # 添加耗时请求中间件
     TokenMiddleware,  # 添加token验证中间件
-    TestMiddleware  # 测试中间件
 ]
 
 
